@@ -1,0 +1,28 @@
+﻿@model MVCMockDemo.Models.Movie
+<div class="col-sm-3">
+    <div class="card-deck py-2">
+        <div class="card shadow">
+            <div class="card-body">
+                <h4 class="card-title">
+                    @Model.Title
+                </h4>
+                <p class="card-text">
+                    Cast: @Model.Cast
+                </p>
+                <p class="card-text">
+                    Rating: @Model.Rating
+                </p>
+                <p class="card-text">
+                    Price: @Model.Price
+                </p>
+                <p class="card-text">
+                    Category: @Model.Category.CategoryName
+                </p>
+                <button> <a asp-controller="Movie" asp-action="Edit" asp-route-id="@Model.Id" style="text-decoration:none">Edit</a></button>
+                <button> <a asp-controller="Movie" asp-action="Details" asp-route-id="@Model.Id" style="text-decoration:none">View</a></button>
+                <button> <a asp-controller="Movie" asp-action="Delete" asp-route-id="@Model.Id" style="text-decoration:none">Delete</a></button>
+                <button> <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-movieId="@Model.Id" style="text-decoration:none">Add To Cart</a></button>
+            </div>
+        </div>
+    </div>
+</div>

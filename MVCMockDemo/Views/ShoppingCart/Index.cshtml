@@ -1,0 +1,50 @@
+﻿@model MVCMockDemo.ViewModels.ShoppingCartViewModel
+
+<p class="lead display-4">Here's your Shopping Cart! - Great Selection of Music</p>
+<table class="table table-striped">
+    <thead>
+        <tr class="text-center">
+            <th>
+                Movie Name
+            </th>
+            <th>
+                Increase/Decrease Qty
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Total Price
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+        {
+            <tr class="text-center">
+                <td>
+                    @item.Movie.Title
+                </td>
+                <td>
+                    <button> <a style="text-decoration:none" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-movieId="@item.Movie.Id">+</a></button>
+                    <button> <a style="text-decoration:none" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-movieId="@item.Movie.Id">-</a></button>
+                </td>
+                <td>
+                    @item.Quantity
+                </td>
+                <td>
+                    @item.Movie.Price
+                </td>
+                <td>
+                    @(item.Quantity * item.Movie.Price)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<button> <a class="btn btn-danger btn-outline-dark" style="text-decoration:none" asp-controller="ShoppingCart" asp-action="ClearShoppingCart">Clear Cart</a></button>
+<h5 class="text-right">Total Amount: @Model.ShoppingCartTotal</h5>
+

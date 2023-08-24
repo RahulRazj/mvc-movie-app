@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<MVCMockDemo.Models.Movie>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <p class="lead display-5">
+        Top Movies of the Week
+    </p>
+
+    <div class="row" style="margin:40px">
+        @foreach (var movie in Model)
+        {
+            @Html.Partial("_MovieCard", movie)
+        }
+    </div>
+</div>
